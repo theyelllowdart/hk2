@@ -40,6 +40,7 @@
 package org.jvnet.hk2.guice.bridge.test;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.name.Names;
 
 /**
  * @author jwells
@@ -53,6 +54,7 @@ public class GuiceBridgeModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(GuiceService1.class).to(GuiceService1Impl.class);
+        bindConstant().annotatedWith(Names.named("color")).to("red");
     }
 
 }

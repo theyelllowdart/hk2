@@ -87,4 +87,21 @@ public class GuiceBridgeTest {
         
         guiceService2.verifyHK2Service();
     }
+
+    /**
+     * Tests a named constant from Guice being injected into an HK2 service
+     */
+    @Test
+    public void testGuiceNamedConstantInHK2Service() {
+      Injector injector = Guice.createInjector(new GuiceBridgeModule());
+      Assert.assertNotNull(injector);
+
+      GuiceIntoHK2Bridge guiceBridge = testLocator.getService(GuiceIntoHK2Bridge.class);
+      Assert.assertNotNull(guiceBridge);
+
+      guiceBridge.bridgeGuiceInjector(injector);
+
+      //will throw an UnsatisfiedDependencyException if named injection fails
+      testLocator.getService(HK2ServiceNamedInjection.class);
+  }
 }

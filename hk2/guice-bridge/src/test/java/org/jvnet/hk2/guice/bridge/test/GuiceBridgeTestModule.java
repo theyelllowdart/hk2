@@ -55,6 +55,7 @@ public class GuiceBridgeTestModule implements HK2TestModule {
     public void configure(DynamicConfiguration config) {
         config.addActiveDescriptor(HK2Service1.class);
         config.addActiveDescriptor(HK2Service2Impl.class);
+        config.addActiveDescriptor(HK2ServiceNamedInjection.class);
     }
 
 }
